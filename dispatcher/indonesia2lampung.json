@@ -1,0 +1,7 @@
+<?php
+require_once("koneksidb.php");
+require("fungsi.php");
+$sql = "SELECT * FROM v_indonesia2lampung";
+$hasil = fetchsql($sql);
+echo json_encode($hasil);
+?>

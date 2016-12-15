@@ -1,33 +1,56 @@
-<!doctype html>
-<html class="no-js" lang="id">
+<!DOCTYPE html>
+<html lang="id">
+    <head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Penerjemah Lampung - Indonesia</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Kamus Indonesia-Lampung">
+        <meta name="author" content="Meizano">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+        <title>Kamus Indonesia-Lampung</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <h1 class="text-center">Kamus Indonesia-Lampung</h1>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+                    <div class="terjemah-panel panel panel-default" id="terjemahPanel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">Terjemahkan</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form id="terjemahForm">
+                                <fieldset>
+                                   <div class="form-group text-center">
+                                        <input id="indonesia" name="bahasa" type="radio" value="indonesia" checked>Indonesia
+                                        <input id="lampung" name="bahasa" type="radio" value="lampung">Lampung
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kataAsal">Kata Asal</label>
+                                        <input id="kataAsal" class="form-control" placeholder="Kata yang diartikan" name="kataAsal" type="text" autofocus required>
+                                    </div>
+                                    <!-- Change this to a button or input when using this as a form -->
+                                    <button class="btn btn-lg btn-info btn-block" type="submit">Terjemahkan</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div id="hasilTerjemah">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<body>
-    <h1>Penerjemah <span id="bahasaAsal">Lampung</span><span id="bahasaTujuan">Indonesia</span></h1>
-     <input type='text' id='kataMasukan'>
-        <div id='hasil'></div>
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-        var inputBox = document.getElementById('kataMasukan');
-
-        inputBox.onkeyup = function() {
-//            document.getElementById('hasil').innerHTML = inputBox.value;
-            terjemah("lampung", "indonesia", "apa");
-        }
-    </script>
-</body>
+        <!--        <script src="js/jquery-3.0.0.min.js"></script> bootstrap CANT SUPPORT-->
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
 </html>
