@@ -60,9 +60,10 @@ var kataAsal = document.getElementById('kataAsal');
 var bahasa = document.getElementById("terjemahForm").elements["bahasa"];
 
 kataAsal.onkeyup = function() {
+    kataAl = kataAsal.value.toLowerCase();
     $('div#hasilTerjemah').empty();
     $('div#hasilTerjemah').removeClass();
-    var terjemahan = terjemah(kataAsal.value,bahasa.value,kamus);
+    var terjemahan = terjemah(kataAl,bahasa.value,kamus);
     $('div#hasilTerjemah').append('<span class="kataAsal">' + kataAsal.value + ' (' + bahasa.value + ')' + '<span>');
     $('div#hasilTerjemah').append('<br/>');
     if(bahasa.value === "indonesia")
