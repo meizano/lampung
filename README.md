@@ -18,9 +18,9 @@ Menyediakan layanan untuk penterjemahan bahasa Indonesia ke bahasa Lampung dan s
 2. Import kaganga-XXXXXXXX.sql ke database 
 3. Buka di web browser
 
-## Preview
+## Online Single Webpage Application
 
-Situs dapat diakses melalui: https://meizano.github.io/lampung/ (hanya tampilan saja, tidak ada data)
+Aplikasi dapat diakses melalui situs: https://meizano.github.io/lampung/ 
 
 ## License
 
