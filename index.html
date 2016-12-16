@@ -17,26 +17,17 @@
             <div class="row">
                 <div class="col-xs-12 col-md-6 col-md-offset-3">
                     <h1 class="text-center">Kamus Indonesia-Lampung</h1>
-
-                    <div class="terjemah-panel panel panel-default" id="terjemahPanel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title text-center">Terjemahkan</h3>
-                        </div>
-                        <div class="panel-body">
-                            <form id="terjemahForm">
-                                <fieldset>
-                                   <div class="form-group text-center">
-                                        <input id="indonesia" name="bahasa" type="radio" value="indonesia" checked>Indonesia
-                                        <input id="lampung" name="bahasa" type="radio" value="lampung">Lampung
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="kataAsal">Kata Asal</label>
-                                        <input id="kataAsal" class="form-control" placeholder="Kata yang diartikan" name="kataAsal" type="text" autofocus required>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
+                    <form id="terjemahForm">
+                        <fieldset>
+                            <div class="form-group text-center">
+                                <input id="indonesia" name="bahasa" type="radio" value="indonesia" checked>Indonesia
+                                <input id="lampung" name="bahasa" type="radio" value="lampung">Lampung
+                            </div>
+                            <div class="form-group">
+                                <input id="kataAsal" class="form-control" placeholder="Kata yang diartikan" name="kataAsal" type="text" autofocus required>
+                            </div>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
             <div class="row">
@@ -47,7 +38,7 @@
             </div>
         </div>
 
-        <!--        <script src="js/jquery-3.0.0.min.js"></script> bootstrap CANT SUPPORT-->
+        <!--<script src="js/jquery-3.0.0.min.js"></script> bootstrap CANT SUPPORT-->
         <script src="js/jquery-1.11.3.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
