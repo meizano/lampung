@@ -25,27 +25,34 @@ $.ajax({
 
 
 function terjemah(kataAsl, bhasa, strArray) {
+    var $kataA = "idkata";
+    var $kataT = "lpgkata";
 
     // Menukar variabel sesuai dengan bahasa asal
     if(bhasa === "indonesia")
     {
-        var $kataA = 'idkata';
-        var $kataT = 'lpgkata';
+        $kataA = "idkata";
+        $kataT = "lpgkata";
     }
     else if(bhasa === "lampung")
     {
-        var $kataA = 'lpgkata';
-        var $kataT = 'idkata';
+        $kataA = "lpgkata";
+        $kataT = "idkata";
     }
+
     var hasils = new Array();
+    var j = 0;
     for (var i = 0; i < strArray.length; i++) {
-        hasils[i] = new Array();
+        hasils[j] = new Array();
         if (strArray[i][$kataA].match(kataAsl))
         {
-            hasils[i][0] = strArray[i][$kataA];
-            hasils[i][1] = strArray[i][$kataT];
+            hasils[j][0] = strArray[i][$kataA];
+            hasils[j][1] = strArray[i][$kataT];
+            j++;
         }
     }
+
+    hasils.pop();
 
     return hasils;
 }
