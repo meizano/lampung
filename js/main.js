@@ -76,7 +76,7 @@ kataAsal.onkeyup = function() {
     } else if(bahasa.value === "lampung")
     {
         for (var i = 0; i < terjemahan.length; i++) {
-            $('div#hasilTerjemah').append('<span class="aksaraLampung">'+ terjemahan[i][1] + ' | <span>');
+            $('div#hasilTerjemah').append('<span class="aksaraLampung">'+ terjemahan[i][0] + ' | <span>');
             $('div#hasilTerjemah').append('<span>'+ terjemahan[i][0] + ' = <span>');
             $('div#hasilTerjemah').append('<span>'+ terjemahan[i][1] + '<span>');
             $('div#hasilTerjemah').append('<br/>');
