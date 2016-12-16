@@ -43,16 +43,14 @@ function terjemah(kataAsl, bhasa, strArray) {
     var hasils = new Array();
     var j = 0;
     for (var i = 0; i < strArray.length; i++) {
-        hasils[j] = new Array();
         if (strArray[i][$kataA].match(kataAsl))
         {
+            hasils[j] = new Array();
             hasils[j][0] = strArray[i][$kataA];
             hasils[j][1] = strArray[i][$kataT];
             j++;
         }
     }
-
-    hasils.pop();
 
     return hasils;
 }
