@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Parsing CSV dengan JavaScript PapaParse">
+        <meta name="author" content="Meizano">
+
+        <title>Parsing CSV</title>
+
+    </head>
+    <body>
+
+
+        <div id="hasil"></div>
+
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <!--<script src="js/parsecsv.js"></script>-->
+        <script src="js/PapaParse/papaparse.min.js"></script>
+        <script>
+
+            // Memilih tag dengan id hasil
+            var hasil  = document.querySelector("#hasil");
+
+            // Membuat array untuk menampung nilai dari berkas CSV
+            var himpunan = new Array();
+
+            Papa.parse("Indonesia-Lampung.csv", {
+                download: true,
+
+                // Mengolah data sekaligus
+                complete: function(results) {
+
+                    for(var i =0; i < results.data.length; i++)
+                    {
+                        // Menyimpan nilai indeks pertama sebagai bahasa Indonesia
+                        if(results.data[i][0] == "")
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            himpunan[i] = new Array();
+                            himpunan[i][0] = results.data[i][0];
+                        }
+                        // Indeks kedua adalah untuk dialek
+                        if(results.data[i][1] == "")
+                        {
+                            himpunan[i][1] = null;
+                        }
+                        else
+                        {
+                            himpunan[i][1] = results.data[i][1];
+                        }
+                        for(var j =1; j < results.data[i].length; j++)
+                        {
+                            // Memisahkan nilai dengan koma di bagian kolom kedua pada CSV sebagai nilai yang berbeda
+                            var pisah = results.data[i][j].split(',');
+                            for(var k =0; k < pisah.length; k++)
+                            {
+                                // Indeks kedua adalah untuk dialek, sehingga dilewati disini
+                                // Indeks ketiga dst digunakan untuk menyimpan kata-kata dalam bahasa Lampung
+                                if(pisah[k] == "")
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    himpunan[i][k+2] = pisah[k];
+                                }
+                            }
+                        }
+
+                    }
+
+                    // Mengubah array menjadi JSON string
+                    var himpunanJSON = JSON.stringify(himpunan);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "dispatcher/ws-entryData-POST.php",
+                        data: {data : himpunanJSON},
+                        cache: false,
+
+                        success: function(kembalian){
+                            hasil.innerHTML += "Data dari server: <br/>" + kembalian;
+                        }
+                    });
+
+                }
+            });
+        </script>
+
+    </body>
+</html>
