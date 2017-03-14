@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2017 at 10:49 AM
+-- Generation Time: Mar 14, 2017 at 11:01 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -6487,12 +6487,6 @@ INSERT INTO `indonesia` (`id`, `kata`, `definisi`, `jenis`) VALUES
 --
 
 INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
-(0, 0, NULL),
-(0, 271, NULL),
-(0, 401, NULL),
-(0, 878, NULL),
-(0, 2667, NULL),
-(0, 8848, NULL),
 (1, 1, NULL),
 (1, 2, NULL),
 (2, 3, NULL),
@@ -9498,13 +9492,13 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (723, 2324, NULL),
 (723, 2325, NULL),
 (724, 2326, NULL),
-(724, 2327, NULL);
-INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
+(724, 2327, NULL),
 (724, 2328, NULL),
 (724, 4260, NULL),
 (724, 40707, NULL),
 (725, 2329, NULL),
-(725, 2330, NULL),
+(725, 2330, NULL);
+INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
 (725, 2331, NULL),
 (725, 40709, NULL),
 (726, 996, NULL),
@@ -11100,7 +11094,6 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (1140, 1500, NULL),
 (1140, 3486, NULL),
 (1140, 43381, NULL),
-(1141, 0, NULL),
 (1141, 167, NULL),
 (1141, 168, NULL),
 (1141, 798, NULL),
@@ -12268,7 +12261,6 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (1459, 2526, NULL),
 (1459, 4340, NULL),
 (1459, 4341, NULL),
-(1460, 0, NULL),
 (1460, 1441, NULL),
 (1460, 4344, NULL),
 (1460, 4346, NULL),
@@ -12308,15 +12300,15 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (1472, 4373, NULL),
 (1472, 4374, NULL),
 (1472, 4375, NULL),
-(1473, 4376, NULL);
-INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
+(1473, 4376, NULL),
 (1473, 45457, NULL),
 (1473, 45459, NULL),
 (1474, 17, NULL),
 (1474, 4377, NULL),
 (1474, 4379, NULL),
 (1475, 4380, NULL),
-(1475, 4381, NULL),
+(1475, 4381, NULL);
+INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
 (1475, 4382, NULL),
 (1476, 4383, NULL),
 (1477, 4384, NULL),
@@ -13828,7 +13820,6 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (1976, 5438, NULL),
 (1976, 5439, NULL),
 (1976, 5440, NULL),
-(1977, 0, NULL),
 (1977, 5441, NULL),
 (1977, 53208, NULL),
 (1978, 5443, NULL),
@@ -13874,7 +13865,6 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (1992, 53231, NULL),
 (1993, 5476, NULL),
 (1993, 53233, NULL),
-(1994, 0, NULL),
 (1994, 1574, NULL),
 (1994, 1575, NULL),
 (1994, 5479, NULL),
@@ -13945,7 +13935,6 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (2014, 53272, NULL),
 (2014, 53273, NULL),
 (2014, 53274, NULL),
-(2015, 0, NULL),
 (2015, 53275, NULL),
 (2016, 5536, NULL),
 (2016, 5537, NULL),
@@ -14494,7 +14483,6 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (2203, 5955, NULL),
 (2203, 5956, NULL),
 (2203, 5957, NULL),
-(2204, 0, NULL),
 (2204, 4344, NULL),
 (2204, 4346, NULL),
 (2204, 53660, NULL),
@@ -15061,8 +15049,7 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (2428, 42323, NULL),
 (2428, 54170, NULL),
 (2429, 6410, NULL),
-(2430, 6411, NULL);
-INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
+(2430, 6411, NULL),
 (2430, 6412, NULL),
 (2430, 54174, NULL),
 (2431, 4567, NULL),
@@ -15072,7 +15059,8 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (2433, 2347, NULL),
 (2433, 40749, NULL),
 (2433, 54179, NULL),
-(2434, 6418, NULL),
+(2434, 6418, NULL);
+INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
 (2435, 6419, NULL),
 (2435, 54184, NULL),
 (2436, 6420, NULL),
@@ -15583,7 +15571,6 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (2617, 2483, NULL),
 (2617, 6795, NULL),
 (2618, 6796, NULL),
-(2619, 0, NULL),
 (2619, 6797, NULL),
 (2619, 6798, NULL),
 (2620, 184, NULL),
@@ -15600,7 +15587,6 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (2622, 6810, NULL),
 (2623, 6811, NULL),
 (2623, 6812, NULL),
-(2624, 0, NULL),
 (2624, 6814, NULL),
 (2624, 54618, NULL),
 (2625, 6815, NULL),
@@ -16967,7 +16953,6 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (3135, 7933, NULL),
 (3135, 8295, NULL),
 (3135, 52867, NULL),
-(3136, 0, NULL),
 (3136, 7934, NULL),
 (3136, 7935, NULL),
 (3136, 55339, NULL),
@@ -17822,8 +17807,7 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (3516, 1995, NULL),
 (3516, 7524, NULL),
 (3516, 8673, NULL),
-(3517, 8675, NULL);
-INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
+(3517, 8675, NULL),
 (3517, 8676, NULL),
 (3518, 8677, NULL),
 (3518, 55635, NULL),
@@ -17836,7 +17820,8 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (3520, 55638, NULL),
 (3521, 701, NULL),
 (3521, 2253, NULL),
-(3521, 2376, NULL),
+(3521, 2376, NULL);
+INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
 (3521, 2378, NULL),
 (3521, 4241, NULL),
 (3521, 8682, NULL),
@@ -20421,8 +20406,7 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (27817, 45415, NULL),
 (27819, 45417, NULL),
 (27821, 45418, NULL),
-(27822, 45420, NULL);
-INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
+(27822, 45420, NULL),
 (27831, 45431, NULL),
 (27831, 45433, NULL),
 (27835, 45435, NULL),
@@ -20434,7 +20418,8 @@ INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VAL
 (27851, 45451, NULL),
 (27853, 45453, NULL),
 (27853, 45455, NULL),
-(27859, 45461, NULL),
+(27859, 45461, NULL);
+INSERT INTO `indonesia2lampung` (`id_indonesia`, `id_lampung`, `keterangan`) VALUES
 (27861, 4302, NULL),
 (27863, 45465, NULL),
 (27865, 7533, NULL),
