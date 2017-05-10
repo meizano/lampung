@@ -50,6 +50,7 @@ function terjemah(kataAsl, bhasa, strArray) {
             hasils[j][0] = strArray[i][$kataA];
             hasils[j][1] = strArray[i][$kataT];
             hasils[j][2] = strArray[i]["lpgdialek"];
+            hasils[j][3] = strArray[i]["lpgaksara"];
             j++;
             if( j == 30)
                 break;
@@ -98,7 +99,7 @@ kataAsal.onkeyup = function() {
     {
         for (var i = 0; i < terjemahan.length; i++) {
             $('div#hasilTerjemah').append('<span>'+ terjemahan[i][0] + ' = </span>');
-            $('div#hasilTerjemah').append('<span class="aksaraLampung">'+ aksarakan(terjemahan[i][1]) + ' | </span>');
+            $('div#hasilTerjemah').append('<span class="aksaraLampung">'+ aksarakan(terjemahan[i][3]) + ' | </span>');
             //            $('div#hasilTerjemah').append(aksarakan(terjemahan[i][1]) + ' | '); // untuk debugging tampilan aksara
             $('div#hasilTerjemah').append('<span>' + terjemahan[i][1]);
             if(terjemahan[i][2] != null)
@@ -109,7 +110,7 @@ kataAsal.onkeyup = function() {
     } else if(bahasa.value === "lampung")
     {
         for (var i = 0; i < terjemahan.length; i++) {
-            $('div#hasilTerjemah').append('<span class="aksaraLampung">'+ aksarakan(terjemahan[i][0]) + ' | </span>');
+            $('div#hasilTerjemah').append('<span class="aksaraLampung">'+ aksarakan(terjemahan[i][3]) + ' | </span>');
             $('div#hasilTerjemah').append('<span>'+ terjemahan[i][0]);
             if(terjemahan[i][2] != null)
                 $('div#hasilTerjemah').append('<sup>'+ terjemahan[i][2] + '</sup>');
