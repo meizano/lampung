@@ -1,4 +1,7 @@
-var kamus = new Object();
+/*jslint browser: true*/
+/*global $, jQuery, alert*/
+'use strict';
+var kamus = {};
 
 // Mengambil data JSON dari server
 $.ajax({
@@ -8,8 +11,8 @@ $.ajax({
     // Jika web service tidak merespon/gagal
     error: function (XMLHttpRequest, textStatus, errorThrown) {
         $('div#hasilTerjemah').text("responseText: " + XMLHttpRequest.responseText +
-                                    ", textStatus: " + textStatus +
-                                    ", errorThrown: " + errorThrown);
+            ", textStatus: " + textStatus +
+            ", errorThrown: " + errorThrown);
         $('div#hasilTerjemah').removeClass();
         $('div#hasilTerjemah').addClass("alert alert-warning");
     }, // error
@@ -26,25 +29,24 @@ $.ajax({
 
 
 function terjemah(kataAsl, bhasa, strArray) {
-    var $kataA = "lpgkata",
+    let $kataA = "lpgkata",
         $kataT = "idkata";
 
+
     // Menukar variabel sesuai dengan bahasa asal
-    if (bhasa === "indonesia")
-    {
+    if (bhasa === "indonesia") {
         $kataA = "idkata";
         $kataT = "lpgkata";
-    }
-    else if (bhasa === "lampung")
-    {
+    } else if (bhasa === "lampung") {
         $kataA = "lpgkata";
         $kataT = "idkata";
     }
 
-    var hasils = new Array();
-    var j = 0;
-    for (var i = 0; i < strArray.length; i++) {
-        if (strArray[i][$kataA].match(kataAsl)) // test / match
+    let hasils = [],
+        j = 0;
+
+    for (let i = 0; i < strArray.length; i++) {
+        if (strArray[i][$kataA] === kataAsl) // test / match
         {
             hasils[j] = new Array();
             hasils[j][0] = strArray[i][$kataA];
@@ -52,7 +54,7 @@ function terjemah(kataAsl, bhasa, strArray) {
             hasils[j][2] = strArray[i]["lpgdialek"];
             hasils[j][3] = strArray[i]["lpgaksara"];
             j++;
-            if( j == 30)
+            if (j == 30)
                 break;
         }
     }
@@ -61,26 +63,36 @@ function terjemah(kataAsl, bhasa, strArray) {
 }
 
 function aksarakan(kataLampung) {
-    var $aksara ="";
+    var $aksara = "";
     var $indeks = 0;
 
-    if(kataLampung.charAt($indeks) == "a")
-    {
-        $aksara += kataLampung.charAt($indeks);
+
+    if (kataLampung.charAt(0) === "a") {
+        $aksara += kataLampung.charAt(0);
+        $indeks++;
     }
 
-    while($indeks < kataLampung.length)
+    while ($indeks < kataLampung.length) //
     {
-        if(kataLampung.charAt($indeks) != "a")
+        if (kataLampung.charAt($indeks) === "a") //
         {
-            $aksara += kataLampung.charAt($indeks);
-        }
-        if(kataLampung.charAt($indeks) == "a" && (kataLampung.charAt($indeks+1) == "i" || kataLampung.charAt($indeks+1) == "u" || kataLampung.charAt($indeks+1) == "a"))
-        {
+            if (kataLampung.charAt($indeks + 1) === "i" || kataLampung.charAt($indeks + 1) == "u" || kataLampung.charAt($indeks + 1) === "a") //
+            {
+                $aksara += kataLampung.charAt($indeks);
+            }
+
+        } else {
             $aksara += kataLampung.charAt($indeks);
         }
         $indeks++;
     }
+
+    if (kataLampung.charAt(kataLampung.length - 1) === "a" || kataLampung.charAt(kataLampung.length - 1) === "u" || kataLampung.charAt(kataLampung.length - 1) === "i" || kataLampung.charAt($indeks + 1) === "e" || kataLampung.charAt($indeks + 1) === "o") {
+
+    } else {
+        $aksara += "x";
+    }
+
     return $aksara;
 }
 
@@ -88,34 +100,34 @@ function aksarakan(kataLampung) {
 var kataAsal = document.getElementById('kataAsal');
 var bahasa = document.getElementById("terjemahForm").elements["bahasa"];
 
-kataAsal.onkeyup = function() {
-    kataAl = kataAsal.value.toLowerCase();
+kataAsal.onkeyup = function () {
+    var kataAl = kataAsal.value.toLowerCase();
     $('div#hasilTerjemah').empty();
     $('div#hasilTerjemah').removeClass();
-    var terjemahan = terjemah(kataAl,bahasa.value,kamus);
+    var terjemahan = terjemah(kataAl, bahasa.value, kamus);
     $('div#hasilTerjemah').append('<span class="kataAsal">' + kataAsal.value + ' (' + bahasa.value + ')' + '<span>');
     $('div#hasilTerjemah').append('<br/>');
-    if(bahasa.value === "indonesia")
-    {
+    if (bahasa.value === "indonesia") {
         for (var i = 0; i < terjemahan.length; i++) {
-            $('div#hasilTerjemah').append('<span>'+ terjemahan[i][0] + ' = </span>');
-            $('div#hasilTerjemah').append('<span class="aksaraLampung">'+ aksarakan(terjemahan[i][3]) + ' | </span>');
-            //            $('div#hasilTerjemah').append(aksarakan(terjemahan[i][1]) + ' | '); // untuk debugging tampilan aksara
+            $('div#hasilTerjemah').append('<span>' + terjemahan[i][0] + ' = </span>');
+            //            $('div#hasilTerjemah').append('<span class="aksaraLampung">' + aksarakan(terjemahan[i][3]) + ' | </span>');
+            $('div#hasilTerjemah').append('<span class="aksaraLampung">' + aksarakan(terjemahan[i][1]) + ' | </span>'); // untuk debugging tampilan aksara
             $('div#hasilTerjemah').append('<span>' + terjemahan[i][1]);
-            if(terjemahan[i][2] != null)
-                $('div#hasilTerjemah').append('<sup>'+ terjemahan[i][2] + '</sup>');
+            if (terjemahan[i][2] != null)
+                $('div#hasilTerjemah').append('<sup>' + terjemahan[i][2] + '</sup>');
             $('div#hasilTerjemah').append('</span>');
             $('div#hasilTerjemah').append('<br/>');
         }
-    } else if(bahasa.value === "lampung")
-    {
+    } else if (bahasa.value === "lampung") {
         for (var i = 0; i < terjemahan.length; i++) {
-            $('div#hasilTerjemah').append('<span class="aksaraLampung">'+ aksarakan(terjemahan[i][3]) + ' | </span>');
-            $('div#hasilTerjemah').append('<span>'+ terjemahan[i][0]);
-            if(terjemahan[i][2] != null)
-                $('div#hasilTerjemah').append('<sup>'+ terjemahan[i][2] + '</sup>');
+            //            $('div#hasilTerjemah').append('<span class="aksaraLampung">' + aksarakan(terjemahan[i][3]) + ' | </span>');
+            $('div#hasilTerjemah').append('<span class="aksaraLampung">' + aksarakan(terjemahan[i][0]) + ' | </span>'); // untuk debugging tampilan aksara
+
+            $('div#hasilTerjemah').append('<span>' + terjemahan[i][0]);
+            if (terjemahan[i][2] != null)
+                $('div#hasilTerjemah').append('<sup>' + terjemahan[i][2] + '</sup>');
             $('div#hasilTerjemah').append(' = </span>');
-            $('div#hasilTerjemah').append('<span>'+ terjemahan[i][1] + '</span>');
+            $('div#hasilTerjemah').append('<span>' + terjemahan[i][1] + '</span>');
             $('div#hasilTerjemah').append('<br/>');
         }
     }
