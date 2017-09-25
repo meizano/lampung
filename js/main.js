@@ -87,7 +87,7 @@ function aksarakan(kataLampung) {
         $indeks++;
     }
 
-    if (kataLampung.charAt(kataLampung.length - 1) === "a" || kataLampung.charAt(kataLampung.length - 1) === "u" || kataLampung.charAt(kataLampung.length - 1) === "i" || kataLampung.charAt($indeks + 1) === "e" || kataLampung.charAt($indeks + 1) === "o") {
+    if (kataLampung.charAt(kataLampung.length - 1) === "a" || kataLampung.charAt(kataLampung.length - 1) === "u" || kataLampung.charAt(kataLampung.length - 1) === "i" || kataLampung.charAt($indeks - 1) === "e" || kataLampung.charAt($indeks - 1) === "o") {
 
     } else {
         $aksara += "x";
