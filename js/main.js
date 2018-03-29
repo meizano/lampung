@@ -2,7 +2,8 @@
 /*global $, jQuery, alert*/
 'use strict';
 var kamus = {};
-
+kamus = kamusLampung;
+/*
 // Mengambil data JSON dari server
 $.ajax({
     type: "GET",
@@ -10,24 +11,23 @@ $.ajax({
     dataType: "json",
     // Jika web service tidak merespon/gagal
     error: function (XMLHttpRequest, textStatus, errorThrown) {
-        $('div#hasilTerjemah').text("responseText: " + XMLHttpRequest.responseText +
+        hasilTerjemah.text("responseText: " + XMLHttpRequest.responseText +
             ", textStatus: " + textStatus +
             ", errorThrown: " + errorThrown);
-        $('div#hasilTerjemah').removeClass();
-        $('div#hasilTerjemah').addClass("alert alert-warning");
+        hasilTerjemah.removeClass();
+        hasilTerjemah.addClass("alert alert-warning");
     }, // error
 
     // Jika web service merespon
     // data yang mengandung nilai JSON akan dikembalikan
     success: function (data) {
         kamus = data;
-        $('div#hasilTerjemah').text("Siap menterjemahkan.");
-        $('div#hasilTerjemah').removeClass();
-        $('div#hasilTerjemah').addClass("alert alert-success");
+        hasilTerjemah.text("Siap menterjemahkan.");
+        hasilTerjemah.removeClass();
+        hasilTerjemah.addClass("alert alert-success");
     } // success
 }); // ajax
-
-
+*/
 function terjemah(kataAsl, bhasa, strArray) {
     let $kataA = "lpgkata",
         $kataT = "idkata";
@@ -97,39 +97,79 @@ function aksarakan(kataLampung) {
 }
 
 
+//Fungsi untuk memudahkan buat Node
+function createNode(element) {
+    return document.createElement(element); // Membuat tipe elemen yang dilewatkan melalui parameter
+}
+
+//Fungsi untuk menambahkan sub node di bawah Node
+function append(parent, el) {
+    return parent.appendChild(el); // Append parameter kedua ke yang pertama
+}
+
 var kataAsal = document.getElementById('kataAsal');
 var bahasa = document.getElementById("terjemahForm").elements["bahasa"];
+//var hasilTerjemah = document.getElementById('hasilTerjemah');
 
 kataAsal.onkeyup = function () {
+    //Merubah ke huruf kecil semua agar tidak ada perbedaan huruf kecil dan besar
     var kataAl = kataAsal.value.toLowerCase();
-    $('div#hasilTerjemah').empty();
-    $('div#hasilTerjemah').removeClass();
-    var terjemahan = terjemah(kataAl, bahasa.value, kamus);
-    $('div#hasilTerjemah').append('<span class="kataAsal">' + kataAsal.value + ' (' + bahasa.value + ')' + '<span>');
-    $('div#hasilTerjemah').append('<br/>');
-    if (bahasa.value === "indonesia") {
-        for (var i = 0; i < terjemahan.length; i++) {
-            $('div#hasilTerjemah').append('<span>' + terjemahan[i][0] + ' = </span>');
-            //            $('div#hasilTerjemah').append('<span class="aksaraLampung">' + aksarakan(terjemahan[i][3]) + ' | </span>');
-            $('div#hasilTerjemah').append('<span class="aksaraLampung">' + aksarakan(terjemahan[i][1]) + ' | </span>'); // untuk debugging tampilan aksara
-            $('div#hasilTerjemah').append('<span>' + terjemahan[i][1]);
-            if (terjemahan[i][2] != null)
-                $('div#hasilTerjemah').append('<sup>' + terjemahan[i][2] + '</sup>');
-            $('div#hasilTerjemah').append('</span>');
-            $('div#hasilTerjemah').append('<br/>');
-        }
-    } else if (bahasa.value === "lampung") {
-        for (var i = 0; i < terjemahan.length; i++) {
-            //            $('div#hasilTerjemah').append('<span class="aksaraLampung">' + aksarakan(terjemahan[i][3]) + ' | </span>');
-            $('div#hasilTerjemah').append('<span class="aksaraLampung">' + aksarakan(terjemahan[i][0]) + ' | </span>'); // untuk debugging tampilan aksara
 
-            $('div#hasilTerjemah').append('<span>' + terjemahan[i][0]);
-            if (terjemahan[i][2] != null)
-                $('div#hasilTerjemah').append('<sup>' + terjemahan[i][2] + '</sup>');
-            $('div#hasilTerjemah').append(' = </span>');
-            $('div#hasilTerjemah').append('<span>' + terjemahan[i][1] + '</span>');
-            $('div#hasilTerjemah').append('<br/>');
-        }
+    //Mengosongkan nilai dan menghilangkan style
+    hasilTerjemah.innerHTML = '';
+    hasilTerjemah.classList.remove();
+
+    //menterjemahkan
+    var terjemahan = terjemah(kataAl, bahasa.value, kamus);
+
+    //membuat span dan menambahkannya ke div#hasilTerjemah
+    var span = createNode("span");
+    span.classList.add("kataAsal");
+    span.innerHTML = kataAsal.value + ' (' + bahasa.value + ')';
+    append(hasilTerjemah, span);
+    append(hasilTerjemah, createNode("br"));
+
+    if (bahasa.value === "indonesia") {
+        terjemahan.map(function (dt) {
+            let p = createNode('p'),
+                span1 = createNode('span'),
+                span2 = createNode('span'),
+                span3 = createNode('span'); // memakai fungsi pembuat elemen
+            span1.innerHTML = dt[0] + " = ";
+            span2.innerHTML = dt[1];
+            span2.classList.add("aksaraLampung"); //diubah menjadi aksara
+            span3.innerHTML = " (" + dt[1] + ")";
+            if (dt[2] != null) {
+                let sup = createNode('sup');
+                sup.innerHTML = dt[2];
+                append(span3, sup);
+            }
+            append(p, span1); // memakai fungsi append ke parameter pertama
+            append(p, span2);
+            append(p, span3);
+            append(hasilTerjemah, p);
+        })
+    } else if (bahasa.value === "lampung") {
+                terjemahan.map(function (dt) {
+            let p = createNode('p'),
+                span1 = createNode('span'),
+                span2 = createNode('span'),
+                span3 = createNode('span'); // memakai fungsi pembuat elemen
+            span1.innerHTML = dt[0];
+            span1.classList.add("aksaraLampung"); //diubah menjadi aksara
+            span2.innerHTML = " (" + dt[0] + ")";
+            //jika ada dialek
+            if (dt[2] != null) {
+                let sup = createNode('sup');
+                sup.innerHTML = dt[2];
+                append(span2, sup);
+            }
+                    span3.innerHTML = " = " + dt[1];
+            append(p, span1); // memakai fungsi append ke parameter pertama
+            append(p, span2);
+            append(p, span3);
+            append(hasilTerjemah, p);
+        })
     }
-    $('div#hasilTerjemah').addClass("alert alert-success");
+    hasilTerjemah.classList.add("alert", "alert-success");
 }

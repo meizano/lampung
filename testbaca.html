@@ -1,0 +1,30 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript">
+
+  var x;
+  if(navigator.appName.search('Microsoft')>-1) { x = new ActiveXObject('MSXML2.XMLHTTP'); }
+  else { x = new XMLHttpRequest(); }
+
+  function getdata() {
+    x.open('get', './dispatcher/indonesia2lampung.json', true);
+    x.onreadystatechange= showdata;
+    x.send(null);
+  }
+
+  function showdata() {
+    if(x.readyState==4) {
+      var el = document.getElementById('content');
+      el.innerHTML = x.responseText;
+    }
+  }
+
+  </script>
+</head>
+<body onload="getdata();showdata();">
+
+  <div id="content"></div>
+
+</body>
+</html>
