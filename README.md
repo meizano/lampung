@@ -2,7 +2,7 @@
 
 Lampung Dictionary adalah kamus digital Indonesia - Lampung yang menterjemahkan bahasa indonesia ke bahasa lampung dengan aksaranya dan sebaliknya. Program dikembangkan dengan menggunakan HTML, CSS, JavaScript, dan API (melalui PHP).
 CASE tools yang digunakan:
-* jQuery 1.11
+* jQuery 1.11 (tidak diperlukan lagi untuk logika, hanya untuk bootstrap)
 * bootstrap 3.36
 * XAMPP 5.5 (PHP 5.5 dan MySQL 5)
 

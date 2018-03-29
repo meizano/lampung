@@ -106,14 +106,15 @@ var bahasa = document.getElementById("terjemahForm").elements["bahasa"];
 
 kataAsal.onkeyup = function () {
     //Merubah ke huruf kecil semua agar tidak ada perbedaan huruf kecil dan besar
-    var kataAl = kataAsal.value.toLowerCase();
+    var kataAsals = kataAsal.value.toLowerCase();
+    var kataAl = kataAsals.split(/\s+/);
 
     //Mengosongkan nilai dan menghilangkan style
     hasilTerjemah.innerHTML = '';
     hasilTerjemah.classList.remove("alert", "alert-success", "alert-warning");
 
     //menterjemahkan
-    var terjemahan = terjemah(kataAl, bahasa.value, kamus);
+    var terjemahan = terjemah(kataAl[0], bahasa.value, kamus);
 
     //membuat span dan menambahkannya ke div#hasilTerjemah
     var span = createNode("span");
