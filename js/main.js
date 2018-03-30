@@ -113,57 +113,61 @@ kataAsal.onkeyup = function () {
     hasilTerjemah.innerHTML = '';
     hasilTerjemah.classList.remove("alert", "alert-success", "alert-warning");
 
-    //menterjemahkan
-    var terjemahan = terjemah(kataAl[0], bahasa.value, kamus);
+    for (let i = 0; i < kataAl.length; i++) {
+        //menterjemahkan
+        var terjemahan = terjemah(kataAl[i], bahasa.value, kamus);
 
-    //membuat span dan menambahkannya ke div#hasilTerjemah
-    var span = createNode("span");
-    span.classList.add("kataAsal");
-    span.innerHTML = kataAsal.value + ' (' + bahasa.value + ')';
-    append(hasilTerjemah, span);
-    append(hasilTerjemah, createNode("br"));
+        //membuat span dan menambahkannya ke div#hasilTerjemah
+        var pKalimat = createNode("p");
+        pKalimat.classList.add("kataAsal");
+        pKalimat.innerHTML = kataAsal.value + ' (' + bahasa.value + ') : ' + kataAl[i];
+        append(hasilTerjemah, createNode("hr"));
+        append(hasilTerjemah, pKalimat);
+        append(hasilTerjemah, createNode("hr"));
 
-    if (bahasa.value === "indonesia") {
-        terjemahan.map(function (dt) {
-            let p = createNode('p'),
-                span1 = createNode('span'),
-                span2 = createNode('span'),
-                span3 = createNode('span'); // memakai fungsi pembuat elemen
-            span1.innerHTML = dt[0] + " = ";
-            span2.innerHTML = dt[1];
-            span2.classList.add("aksaraLampung"); //diubah menjadi aksara
-            span3.innerHTML = " (" + dt[1] + ")";
-            if (dt[2] != null) {
-                let sup = createNode('sup');
-                sup.innerHTML = dt[2];
-                append(span3, sup);
-            }
-            append(p, span1); // memakai fungsi append ke parameter pertama
-            append(p, span2);
-            append(p, span3);
-            append(hasilTerjemah, p);
-        })
-    } else if (bahasa.value === "lampung") {
-        terjemahan.map(function (dt) {
-            let p = createNode('p'),
-                span1 = createNode('span'),
-                span2 = createNode('span'),
-                span3 = createNode('span'); // memakai fungsi pembuat elemen
-            span1.innerHTML = dt[0];
-            span1.classList.add("aksaraLampung"); //diubah menjadi aksara
-            span2.innerHTML = " (" + dt[0] + ")";
-            //jika ada dialek
-            if (dt[2] != null) {
-                let sup = createNode('sup');
-                sup.innerHTML = dt[2];
-                append(span2, sup);
-            }
-            span3.innerHTML = " = " + dt[1];
-            append(p, span1); // memakai fungsi append ke parameter pertama
-            append(p, span2);
-            append(p, span3);
-            append(hasilTerjemah, p);
-        })
+        if (bahasa.value === "indonesia") {
+            terjemahan.map(function (dt) {
+                let p = createNode('p'),
+                    span1 = createNode('span'),
+                    span2 = createNode('span'),
+                    span3 = createNode('span'); // memakai fungsi pembuat elemen
+                span1.innerHTML = dt[0] + " = ";
+                span2.innerHTML = dt[1];
+                span2.classList.add("aksaraLampung"); //diubah menjadi aksara
+                span3.innerHTML = " (" + dt[1] + ")";
+                if (dt[2] != null) {
+                    let sup = createNode('sup');
+                    sup.innerHTML = dt[2];
+                    append(span3, sup);
+                }
+                append(p, span1); // memakai fungsi append ke parameter pertama
+                append(p, span2);
+                append(p, span3);
+                append(hasilTerjemah, p);
+            })
+        } else if (bahasa.value === "lampung") {
+            terjemahan.map(function (dt) {
+                let p = createNode('p'),
+                    span1 = createNode('span'),
+                    span2 = createNode('span'),
+                    span3 = createNode('span'); // memakai fungsi pembuat elemen
+                span1.innerHTML = dt[0];
+                span1.classList.add("aksaraLampung"); //diubah menjadi aksara
+                span2.innerHTML = " (" + dt[0] + ")";
+                //jika ada dialek
+                if (dt[2] != null) {
+                    let sup = createNode('sup');
+                    sup.innerHTML = dt[2];
+                    append(span2, sup);
+                }
+                span3.innerHTML = " = " + dt[1];
+                append(p, span1); // memakai fungsi append ke parameter pertama
+                append(p, span2);
+                append(p, span3);
+                append(hasilTerjemah, p);
+            })
+        }
     }
+
     hasilTerjemah.classList.add("alert", "alert-success");
 }
