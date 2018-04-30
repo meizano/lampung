@@ -22,6 +22,8 @@ Menyediakan layanan untuk penterjemahan bahasa Indonesia ke bahasa Lampung dan s
 
 Aplikasi dapat diakses melalui situs: https://meizano.github.io/lampung/ 
 
+![QR COde](QRCode-Github-Meizano-Lampung.png)
+
 ## License
 
 GNU GPLv3
