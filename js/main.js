@@ -2,20 +2,15 @@
 'use strict';
 var kamus = {};
 kamus = kamusLampung;
-<<<<<<< HEAD
 
 var hasilTerjemah = document.getElementById('hasilTerjemah');
 
-=======
-/*
->>>>>>> Membuat json diletakkan dalam javascript, tricks JSONP
 // Mengambil data JSON dari server
 var url = './dispatcher/indonesia2lampung.json'; // URL dari data JSON
 fetch(url)
     .then((resp) => resp.json())
     .then(function (data) {
         kamus = data;
-<<<<<<< HEAD
         hasilTerjemah.innerHTML = 'Siap menterjemahkan';
         hasilTerjemah.classList.remove("alert", "alert-success", "alert-warning");
         hasilTerjemah.classList.add("alert", "alert-success");
@@ -27,14 +22,6 @@ fetch(url)
         hasilTerjemah.classList.add("alert", "alert-warning");
     });
 
-=======
-        $('div#hasilTerjemah').text("Siap menterjemahkan.");
-        $('div#hasilTerjemah').removeClass();
-        $('div#hasilTerjemah').addClass("alert alert-success");
-    } // success
-}); // ajax
-*/
->>>>>>> Membuat json diletakkan dalam javascript, tricks JSONP
 function terjemah(kataAsl, bhasa, strArray) {
     let kataA = "lpgkata",
         kataT = "idkata";
