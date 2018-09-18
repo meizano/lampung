@@ -1,7 +1,6 @@
 /*jslint browser: true*/
 'use strict';
 var kamus = {};
-kamus = kamusLampung;
 
 var hasilTerjemah = document.getElementById('hasilTerjemah');
 
