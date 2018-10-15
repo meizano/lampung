@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Kamus Indonesia-Lampung">
+        <meta name="author" content="Meizano">
+        <title>Kamus Indonesia-Lampung</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+                    <h1 class="text-center">Kamus Indonesia-Lampung</h1>
+                    <form id="terjemahForm">
+                        <fieldset>
+                            <div class="form-group text-center">
+                                <input id="indonesia" name="bahasa" type="radio" value="indonesia" checked>Indonesia
+                                <input id="lampung" name="bahasa" type="radio" value="lampung">Lampung
+                            </div>
+                            <div class="form-group">
+                                <input id="kataAsal" class="form-control" placeholder="Kata/kalimat yang diartikan" name="kataAsal" type="text" autofocus required>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+                    <div id="hasilTerjemah">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+<!--		<script src="dispatcher/indonesia2lampung.js"></script>-->
+        <script src="js/main2.js"></script>
+    </body>
+</html>
