@@ -47,7 +47,7 @@ function terjemah(kataAsl, bhasa, strArray) {
             hasils[j][2] = strArray[i]["lpgdialek"];
             hasils[j][3] = strArray[i]["lpgaksara"];
             j++;
-            if (j == 30)
+            if (j == 3)
                 break;
         }
     }
@@ -56,36 +56,118 @@ function terjemah(kataAsl, bhasa, strArray) {
 }
 
 function aksarakan(kataLampung) {
-    var aksara = "";
-    var indeks = 0;
+    var aksara = kataLampung;
 
+    const regexng = /ng[aiueoAIUEO]/g;
+    const regexny = /ny[aiueoAIUEOkKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWGHh]/g;
+    const regexgh = /gh[aiueoAIUEOkKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWGHh]/g;
 
-    if (kataLampung.charAt(0) === "a") {
-        aksara += kataLampung.charAt(0);
-        indeks++;
-    }
+    const regexvocal = /^[iIuUeEoO]/;
 
-    while (indeks < kataLampung.length) //
-    {
-        if (kataLampung.charAt(indeks) === "a") //
-        {
-            if (kataLampung.charAt(indeks + 1) === "i" || kataLampung.charAt(indeks + 1) == "u" || kataLampung.charAt(indeks + 1) === "a") //
-            {
-                aksara += kataLampung.charAt(indeks);
-            }
+    const regexang = /[aiueoIUEO]ng[kKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWGHh]/g;
+    const regexan = /[aiueoIUEO]n[kKQqpPfFvVbBmMtTdDcCjJzZyYlLsSwWGHh]/g;
+    const regexah = /[aiueoIUEO]h[kKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWGHh]/g;
+    const regexar = /[aiueoIUEO]r[kKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWGHh]/g;
+    const regexai = /[aiueoIUEO]i[kKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWGHh]/g;
+    const regexau = /[aiueoIUEO]u[kKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWGHh]/g;
 
-        } else {
-            aksara += kataLampung.charAt(indeks);
-        }
-        indeks++;
-    }
+    const regextandabaca = /[\.\*\+\?\$\^\/\\]/;
+    const regexxawal = /[aiueoIUEO][kKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWH][kKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWH][aiueoIUEO]/g; 
+    const regexx = /[aiueoIUEO]([kKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWHnhriu]|ng)$/g; 
 
-    if (kataLampung.charAt(kataLampung.length - 1) === "a" || kataLampung.charAt(kataLampung.length - 1) === "u" || kataLampung.charAt(kataLampung.length - 1) === "i" || kataLampung.charAt(indeks - 1) === "e" || kataLampung.charAt(indeks - 1) === "o") {
+    const regexangx = /[aiueoIUEO]ngx/g;
+    const regexanx = /[aiueoIUEO]nx/g;
+    const regexahx = /[aiueoIUEO]hx/g;
+    const regexarx = /[aiueoIUEO]rx/g;
+    const regexaix = /[aiueoIUEO]ix/g;
+    const regexaux = /[aiueoIUEO]ux/g;
 
-    } else {
-        aksara += "x";
-    }
+    const regexa = /[kKQqgpPfFvVbBmMtTdDcCjJzZyYlLsSwWGHhnr][a]/g;
 
+    const regexawal = /^[iIuUeEoOXNAR]/g; 
+
+    aksara = aksara.replace(regexng, function (a) {
+        return 'G' + (a[2] ? a[2]  : '');
+        });
+    console.log('G ' + aksara);
+    aksara = aksara.replace(regexny, function (a) {
+        return 'Y' + (a[2] ? a[2]  : '');
+        });
+    console.log('Y ' + aksara);
+    aksara = aksara.replace(regexgh, function (a) {
+        return 'H' + (a[2] ? a[2]  : '');
+        });
+    console.log('H ' + aksara);
+    
+    aksara = aksara.replace(regexang, function (a) {
+        return (a[0].search(regexvocal) != -1  ? a[0]  : '') + 'X' + (a[2] ? a[2]  : '');
+    });
+    console.log('X ' + aksara);
+    aksara = aksara.replace(regexan, function (a) {
+        return (a[0].search(regexvocal) != -1  ? a[0]  : '') + 'N' + (a[2] ? a[2]  : '');
+    });
+    console.log('N ' + aksara);
+    aksara = aksara.replace(regexah, function (a) {
+        return (a[0].search(regexvocal) != -1 ? a[0]  : '') + 'A' + (a[2] ? a[2]  : '');
+    });
+    console.log('A ' + aksara);
+    aksara = aksara.replace(regexar, function (a) {
+        return (a[0].search(regexvocal) != -1  ? a[0]  : '') + 'R' + (a[2] ? a[2]  : '');
+    });
+    console.log('R ' + aksara);
+    aksara = aksara.replace(regexai, function (a) {
+        return (a[0].search(regexvocal) != -1  ? a[0]  : '') + 'I' + (a[2] ? a[2]  : '');
+    });
+    console.log('I ' + aksara);
+    aksara = aksara.replace(regexau, function (a) {
+        return (a[0].search(regexvocal) != -1  ? a[0]  : '') + 'U' + (a[2] ? a[2]  : '');
+    });
+    console.log('U ' + aksara);
+
+    aksara = aksara.replace(regexxawal, function (a) {
+        return a[0] + a[1] + "x" + a[2] + a[3];
+    }); // karakter 1 dan 2 tidak dihapus, harusnya ditambahkan karakter 3 yaitu x
+    console.log('/ awal ' + aksara);
+
+    aksara = aksara.replace(regexx, function (a) {
+        return a + "x";
+    }); // karakter 1 dan 2 tidak dihapus, harusnya ditambahkan karakter 3 yaitu x
+    console.log('/ ' + aksara);
+
+    aksara = aksara.replace(regexangx, function (a) {
+        return (a[0].search(regexvocal) != -1  ? a[0]  : '') + 'X';
+    });
+    console.log('X ' + aksara);
+    aksara = aksara.replace(regexanx, function (a) {
+        return (a[0].search(regexvocal) != -1  ? a[0]  : '') + 'N';
+    });
+    console.log('N ' + aksara);
+    aksara = aksara.replace(regexahx, function (a) {
+        return (a[0].search(regexvocal) != -1 ? a[0]  : '') + 'A';
+    });
+    console.log('A ' + aksara);
+    aksara = aksara.replace(regexarx, function (a) {
+        return (a[0].search(regexvocal) != -1  ? a[0]  : '') + 'R';
+    });
+    console.log('R ' + aksara);
+    aksara = aksara.replace(regexaix, function (a) {
+        return (a[0].search(regexvocal) != -1  ? a[0]  : '') + 'I';
+    });
+    console.log('I ' + aksara);
+    aksara = aksara.replace(regexaux, function (a) {
+        return (a[0].search(regexvocal) != -1  ? a[0]  : '') + 'U';
+    });
+    console.log('U ' + aksara);
+   
+    aksara = aksara.replace(regexa, function (a) {
+        return a[0] + (a[2] ? a[2]  : '');
+    }); //karakter 1 dan 3 harusnya tidak dihapus
+    console.log('a ' + aksara);
+    aksara = aksara.replace(regexawal, function (a) {
+        return "a" + a;
+    }); // Ditambahkan karakter a di depan
+    console.log('awal ' + aksara);
+    
     return aksara;
 }
 
@@ -124,8 +206,12 @@ kataAsal.onkeyup = function () {
         hasilTerjemah.innerHTML = '';
         hasilTerjemah.classList.remove("alert", "alert-success", "alert-warning");
         let strong = createNode("strong");
-        strong.innerHTML = kataAsal.value + ' (' + bahasa.value + ') : ';
+        strong.innerHTML = kataAsal.value + ' (' + bahasa.value + ') : <br/>';
+        let spanAksara = createNode('span');
+        spanAksara.classList.add("aksaraLampung");
+        append(strong, spanAksara);
         append(hasilTerjemah, strong);
+        
 
         for (let i = 0; i < kataAl.length; i++) {
             //menterjemahkan
@@ -138,6 +224,9 @@ kataAsal.onkeyup = function () {
             append(hasilTerjemah, pKata);
             append(hasilTerjemah, createNode("hr"));
 
+            //menambahkan ke bagian strong untuk diaksarakan
+            spanAksara.innerHTML += aksarakan(kataAl[i]) + ' ';
+
             if (bahasa.value === "indonesia") {
                 terjemahan.map(function (dt) {
                     let p = createNode('p'),
@@ -145,7 +234,7 @@ kataAsal.onkeyup = function () {
                         span2 = createNode('span'),
                         span3 = createNode('span'); // memakai fungsi pembuat elemen
                     span1.innerHTML = dt[0] + " = ";
-                    span2.innerHTML = dt[1];
+                    span2.innerHTML = aksarakan(dt[1]);
                     span2.classList.add("aksaraLampung"); //diubah menjadi aksara
                     span3.innerHTML = " (" + dt[1] + ")";
                     if (dt[2] != null) {
@@ -164,7 +253,7 @@ kataAsal.onkeyup = function () {
                         span1 = createNode('span'),
                         span2 = createNode('span'),
                         span3 = createNode('span'); // memakai fungsi pembuat elemen
-                    span1.innerHTML = dt[0];
+                    span1.innerHTML = aksarakan(dt[0]);
                     span1.classList.add("aksaraLampung"); //diubah menjadi aksara
                     span2.innerHTML = " (" + dt[0] + ")";
                     //jika ada dialek
@@ -180,6 +269,7 @@ kataAsal.onkeyup = function () {
                     append(hasilTerjemah, p);
                 })
             }
+            console.log(terjemahan);
         }
 
         hasilTerjemah.classList.add("alert", "alert-success");

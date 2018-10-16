@@ -13,17 +13,17 @@ for($i = 0; $i < sizeof($hasil); $i++)
 {
     $j = 0;
 
-    while($j < strlen($hasil[$i]['kata']))
-    {
-        if()
-        {
+    // while($j < strlen($hasil[$i]['kata']))
+    // {
+    //     if()
+    //     {
 
-        }
-        else
-        {
+    //     }
+    //     else
+    //     {
 
-        }
-    }
+    //     }
+    // }
 
     if(substr($hasil[$i]['kata'], -1) != "a" && substr($hasil[$i]['kata'], -1) != "i" && substr($hasil[$i]['kata'], -1) != "u" && substr($hasil[$i]['kata'], -1) != "e" && substr($hasil[$i]['kata'], -1) != "E" && substr($hasil[$i]['kata'], -1) != "o")
     {
