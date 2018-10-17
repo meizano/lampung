@@ -11,13 +11,13 @@ fetch(url)
     .then(function (data) {
         kamus = data;
         hasilTerjemah.innerHTML = 'Siap menterjemahkan';
-        hasilTerjemah.classList.remove("alert", "alert-success", "alert-warning");
-        hasilTerjemah.classList.add("alert", "alert-success");
+        hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
+        hasilTerjemah.classList.add("alert", "alert-info");
 
     })
     .catch(function (error) {
         hasilTerjemah.innerHTML = JSON.stringify(error);
-        hasilTerjemah.classList.remove("alert", "alert-success", "alert-warning");
+        hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
         hasilTerjemah.classList.add("alert", "alert-warning");
     });
 
@@ -192,8 +192,8 @@ kataAsal.onkeyup = function () {
     // Jika spasi saja, tidak diproses
     if (!kataAsals.replace(/\s/g, '').length) {
         hasilTerjemah.innerHTML = 'Selamat menterjemahkan';
-        hasilTerjemah.classList.remove("alert", "alert-success", "alert-warning");
-        hasilTerjemah.classList.add("alert", "alert-success");
+        hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
+        hasilTerjemah.classList.add("alert", "alert-info");
     } else {
         // Mengubah kata/kalimat yang diketik menjadi array String
         let kataAl = kataAsals.split(/\s+/);
@@ -204,7 +204,7 @@ kataAsal.onkeyup = function () {
 
         //Mengosongkan nilai dan menghilangkan style
         hasilTerjemah.innerHTML = '';
-        hasilTerjemah.classList.remove("alert", "alert-success", "alert-warning");
+        hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
         let strong = createNode("strong");
         strong.innerHTML = kataAsal.value + ' (' + bahasa.value + ') : <br/>';
         let spanAksara = createNode('span');
@@ -272,7 +272,7 @@ kataAsal.onkeyup = function () {
             console.log(terjemahan);
         }
 
-        hasilTerjemah.classList.add("alert", "alert-success");
+        hasilTerjemah.classList.add("alert", "alert-info");
     }
 }
 
