@@ -275,3 +275,10 @@ kataAsal.onkeyup = function () {
         hasilTerjemah.classList.add("alert", "alert-success");
     }
 }
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+      .then(function() {
+        console.log('SW terdaftar');
+      });
+  }
