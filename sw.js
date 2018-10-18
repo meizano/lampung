@@ -15,6 +15,8 @@ self.addEventListener('install', function (event) {
           './js/main.js',
           './css/bootstrap.min.css',
           './css/style.css',
+          './fonts/aksara-Lampung-Unila-v2.ttf',
+          './fonts/'
         ]);
       })
   );
