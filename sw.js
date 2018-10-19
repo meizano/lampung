@@ -3,8 +3,8 @@ var VERSION = "KamusAksaraLampung-v1";
 var fileCache = [
   // './',
   './index.html',
-  './js/jquery-1.11.3.min.js',
-  './js/bootstrap.min.js',
+  // './js/jquery-1.11.3.min.js',
+  // './js/bootstrap.min.js',
   './js/main.js',
   './js/offline.js',
   './css/bootstrap.min.css',
