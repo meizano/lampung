@@ -42,8 +42,8 @@ fetch(url)
 
 // Mengambil data dari web storage
 function fetchKamusDariLocalStorage(data) {
-        var kamus = JSON.parse(data);
-        hasilTerjemah.innerHTML = 'Siap menterjemahkan (Offline)';
+        kamus = JSON.parse(data);
+        hasilTerjemah.innerHTML = 'Siap menterjemahkan (tersedia offline)';
         hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
         hasilTerjemah.classList.add("alert", "alert-info");
 };
@@ -54,6 +54,7 @@ if (storageAvailable('localStorage')) {
     fetchKamus();
     console.log("Fetch dari API");
     } else {
+        console.log("data: " + localStorage.getItem('kamusJSON'));
         fetchKamusDariLocalStorage(localStorage.getItem('kamusJSON'));
     console.log("Fetch dari Local Storage");
     }

@@ -26,7 +26,7 @@ self.addEventListener('install', function (event) {
   );
 });
 
-self.addEventListener('activate', function () {
+self.addEventListener('activate', function (event) {
   console.log('SW aktif');
   event.waitUntil(
     caches.keys().then(function (cacheNames) {
