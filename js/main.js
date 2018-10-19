@@ -1,14 +1,32 @@
 /*jslint browser: true*/
 'use strict';
+var kamusJSON = {};
 var kamus = {};
 
 var hasilTerjemah = document.getElementById('hasilTerjemah');
 
+// Memeriksa apakah web storage tersedia
+function storageAvailable(type) {
+    try {
+        var storage = window[type],
+        x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return false;
+    }
+};
+
 // Mengambil data JSON dari server
+function fetchKamus() {
 var url = './dispatcher/indonesia2lampung.json'; // URL dari data JSON
 fetch(url)
     .then((resp) => resp.json())
     .then(function (data) {
+        // Simpan Data
+        localStorage.setItem('kamusJSON', JSON.stringify(data));
         kamus = data;
         hasilTerjemah.innerHTML = 'Siap menterjemahkan';
         hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
@@ -20,6 +38,29 @@ fetch(url)
         hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
         hasilTerjemah.classList.add("alert", "alert-warning");
     });
+};
+
+// Mengambil data dari web storage
+function fetchKamusDariLocalStorage(data) {
+        var kamus = JSON.parse(data);
+        hasilTerjemah.innerHTML = 'Siap menterjemahkan (Offline)';
+        hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
+        hasilTerjemah.classList.add("alert", "alert-info");
+};
+
+if (storageAvailable('localStorage')) {
+    if (localStorage.getItem('kamusJSON') === null) {
+    // Pertama kali dipakai atau belum ada data tersimpan
+    fetchKamus();
+    console.log("Fetch dari API");
+    } else {
+        fetchKamusDariLocalStorage(localStorage.getItem('kamusJSON'));
+    console.log("Fetch dari Local Storage");
+    }
+    }
+    else {
+    toast("Data kamus belum tersedia..");
+    };
 
 function terjemah(kataAsl, bhasa, strArray) {
     let kataA = "lpgkata",
@@ -53,7 +94,7 @@ function terjemah(kataAsl, bhasa, strArray) {
     }
 
     return hasils;
-}
+};
 
 function aksarakan(kataLampung) {
     var aksara = kataLampung;
@@ -169,18 +210,18 @@ function aksarakan(kataLampung) {
     console.log('awal ' + aksara);
     
     return aksara;
-}
+};
 
 
 //Fungsi untuk memudahkan buat Node
 function createNode(element) {
     return document.createElement(element); // Membuat tipe elemen yang dilewatkan melalui parameter
-}
+};
 
 //Fungsi untuk menambahkan sub node di bawah Node
 function append(parent, el) {
     return parent.appendChild(el); // Append parameter kedua ke yang pertama
-}
+};
 
 var kataAsal = document.getElementById('kataAsal');
 var bahasa = document.getElementById("terjemahForm").elements["bahasa"];
@@ -274,11 +315,11 @@ kataAsal.onkeyup = function () {
 
         hasilTerjemah.classList.add("alert", "alert-info");
     }
-}
+};
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
-      .then(function() {
+    .then(function() {
         console.log('SW terdaftar');
-      });
-  }
+    });
+};
