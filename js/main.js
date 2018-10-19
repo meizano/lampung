@@ -59,7 +59,7 @@ if (storageAvailable('localStorage')) {
     }
     }
     else {
-    toast("Data kamus belum tersedia..");
+    console.log("Data kamus belum tersedia..");
     };
 
 function terjemah(kataAsl, bhasa, strArray) {
