@@ -51,7 +51,7 @@ self.addEventListener('fetch', function (event) {
       return response;
     });
   });
-  e.respondWith(tryInCachesFirst);
+  event.respondWith(tryInCachesFirst);
 });
 
 this.addEventListener('fetch', function(e) {
