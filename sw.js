@@ -1,17 +1,15 @@
 var cacheName = "KamusAksaraLampung-v1";
 
 var fileCache = [
-  './',
+  // './',
   './index.html',
-  'https://cdn.polyfill.io/v2/polyfill.min.js',
   './js/jquery-1.11.3.min.js',
   './js/bootstrap.min.js',
   './js/main.js',
   './js/offline.js',
   './css/bootstrap.min.css',
   './css/style.css',
-  './fonts/aksara-Lampung-Unila-v2.ttf',
-  './fonts/'
+  './fonts/aksara-Lampung-Unila-v2.ttf'
 ];
 
 
