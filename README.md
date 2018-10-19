@@ -2,11 +2,9 @@
 
 Lampung Dictionary adalah kamus digital Indonesia - Lampung yang menterjemahkan bahasa indonesia ke bahasa lampung dengan aksaranya dan sebaliknya. Program dikembangkan dengan menggunakan HTML, CSS, JavaScript, dan API (melalui PHP).
 CASE tools yang digunakan:
-* jQuery 1.11 (tidak diperlukan lagi untuk logika, hanya untuk bootstrap)
-* bootstrap 3.36
-* XAMPP 5.5 (PHP 5.5 dan MySQL 5)
-
-skrip PHP bisa diganti dengan API.
+* j̵Q̵u̵e̵r̵y̵ ̵1̵.̵1̵1̵ (tidak diperlukan lagi untuk logika, hanya untuk bootstrap)
+* bootstrap 4 (hanya css)
+* XAMPP 5.5 (PHP 5.5 dan MySQL 5) (diperlukan untuk menyimpan pada database, tetapi tidak diperlukan untuk fungsi kamus, karena data sudah disimpan di berkas JSON) skrip PHP bisa diganti dengan API.
 
 ## Motivation
 
@@ -14,11 +12,11 @@ Menyediakan layanan untuk penterjemahan bahasa Indonesia ke bahasa Lampung dan s
 
 ## Installation
 
-1. Extract ke dalam web server (misal: htdocs pada xampp)
-2. Import kaganga-XXXXXXXX.sql ke database 
-3. Buka di web browser
+1. Letakkan di dalam sebuah web server dengan https (diperlukan PWA) (misal: htdocs pada xampp atau nodejs)
+2. Buka di web browser
 
-## Online Single Webpage Application
+
+## Progressive Web Application
 
 Aplikasi dapat diakses melalui situs: https://meizano.github.io/lampung/ 
 
