@@ -1,4 +1,4 @@
-var namaCache = "KamusAksaraLampung-v1";
+var cacheName = "KamusAksaraLampung-v1";
 
 var fileCache = [
   './',
@@ -18,7 +18,7 @@ var fileCache = [
 self.addEventListener('install', function (event) {
   console.log('SW terinstal');
   event.waitUntil(
-    caches.open(namaCache)
+    caches.open(cacheName)
     .then(function (cache) {
       // Menambahkan file ke cache
       return cache.addAll(fileCache);
@@ -31,7 +31,7 @@ self.addEventListener('activate', function (event) {
   event.waitUntil(
     caches.keys().then(function (cacheNames) {
       return Promise.all(cacheNames.map(function (key) {
-        if (key !== namaCache) {
+        if (key !== cacheName) {
           console.log('Service Worker: menghapus cache lama', key);
           return caches.delete(key);
         }
