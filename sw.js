@@ -5,6 +5,7 @@ var fileCache = [
   './index.html',
   // './js/jquery-1.11.3.min.js',
   // './js/bootstrap.min.js',
+  './js/aksaraLampung.js',
   './js/main.js',
   './js/offline.js',
   './css/bootstrap.min.css',
