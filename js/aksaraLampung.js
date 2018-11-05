@@ -121,7 +121,7 @@ function alfabetkan(aksaraLampung) {
     const regexKa = /[KkQq]/g;
     const regexGa = /[g]/g;
     const regexNga = /[G]/g;
-    const regexPa = /[PpFf]/g;
+    const regexPa = /[PpFfvV]/g;
     const regexBa = /[Bb]/g;
     const regexMa = /[Mm]/g;
     const regexTa = /[Tt]/g;
@@ -129,8 +129,8 @@ function alfabetkan(aksaraLampung) {
     const regexNa = /[n]/g;
     const regexCa = /[Cc]/g;
     const regexJa = /[JjZz]/g;
-    const regexNya = /[N]/g;
-    const regexYa = /[Yy]/g;
+    const regexNya = /[Y]/g;
+    const regexYa = /[y]/g;
     const regexA = /[a]/g;
     const regexLa = /[Ll]/g;
     const regexRa = /[Rr]/g;
@@ -140,41 +140,40 @@ function alfabetkan(aksaraLampung) {
     const regexGha = /[H]/g;
 
     // Anak Huruf
-    const regexNengen = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]ax/g;
-    const regexUlan1 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[i]/g;
-    const regexUlan2 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[E]/g;
-    const regexBicek = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[e]/g;
-    const regexTekelubang = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[X]/g;
-    const regexRejunjung = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[R]/g;
-    const regexDatasan = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[N]/g;
-    const regexBitan1 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[Oo]/g;
-    const regexBitan2 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[u]/g;
-    const regexTekelungau = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[U]/g;
-    const regexTekelungai = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[I]/g;
-    const regexKeleniah = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[A]/g;
-
-    // Kombinasi anak huruf yang perlu dipertimbangkan
-    // eu, ei, ou, oi, iu, io, eo
-    
-
-    // Anak Huruf
-    const regexNengen = /ax/g;
+    const regexNengen = /a[x]/g;
     const regexUlan1 = /a[i]/g;
     const regexUlan2 = /a[E]/g;
     const regexBicek = /a[e]/g;
-    const regexTekelubang = /a[X]/g;
-    const regexRejunjung = /a[R]/g;
-    const regexDatasan = /a[N]/g;
     const regexBitan1 = /a[Oo]/g;
     const regexBitan2 = /a[u]/g;
-    const regexTekelungau = /a[U]/g;
-    const regexTekelungai = /a[I]/g;
-    const regexKeleniah = /a[A]/g;
+    const regexTekelubang = /X/g;
+    const regexRejunjung = /R/g;
+    const regexDatasan = /N/g;
+    const regexTekelungau = /U/g;
+    const regexTekelungai = /I/g;
+    const regexKeleniah = /A/g;
+
+        // // Anak Huruf
+        // const regexNengen = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]ax/g;
+        // const regexUlan1 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[i]/g;
+        // const regexUlan2 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[E]/g;
+        // const regexBicek = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[e]/g;
+        // const regexBitan1 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[Oo]/g;
+        // const regexBitan2 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[u]/g;
+        // const regexTekelubang = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aiueoé][X]/g;
+        // const regexRejunjung = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aiueoé][R]/g;
+        // const regexDatasan = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aiueoé][N]/g;
+        // const regexTekelungau = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aieoé][U]/g;
+        // const regexTekelungai = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aueoé][I]/g;
+        // const regexKeleniah = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aiueoé][A]/g;
+
+    // Kombinasi anak huruf yang perlu dipertimbangkan
+    // eu, ei, ou, oi, iu, io, eo
 
     // Induk huruf
+    kata = kata.replace(regexA, 'a');
     kata = kata.replace(regexKa, 'ka');
     kata = kata.replace(regexGa, 'ga');
-    kata = kata.replace(regexNga, 'nga');
     kata = kata.replace(regexPa, 'pa');
     kata = kata.replace(regexBa, 'ba');
     kata = kata.replace(regexMa, 'ma');
@@ -183,29 +182,41 @@ function alfabetkan(aksaraLampung) {
     kata = kata.replace(regexNa, 'na');
     kata = kata.replace(regexCa, 'ca');
     kata = kata.replace(regexJa, 'ja');
-    kata = kata.replace(regexNya, 'nya');
     kata = kata.replace(regexYa, 'ya');
-    kata = kata.replace(regexA, 'a');
     kata = kata.replace(regexLa, 'la');
     kata = kata.replace(regexRa, 'ra');
     kata = kata.replace(regexSa, 'sa');
     kata = kata.replace(regexWa, 'wa');
     kata = kata.replace(regexHa, 'ha');
     kata = kata.replace(regexGha, 'gha');
+    kata = kata.replace(regexNga, 'nga');
+    kata = kata.replace(regexNya, 'nya');
 
     // Anak huruf
-    kata = kata.replace(regexNengen, '');
-    kata = kata.replace(regexUlan1, 'i');
-    kata = kata.replace(regexUlan2, 'é'); // Perlu dipertimbangkan alternatif untuk huruf é
-    kata = kata.replace(regexBicek, 'e');
-    kata = kata.replace(regexTekelubang, 'ang');
-    kata = kata.replace(regexRejunjung, 'ar');
-    kata = kata.replace(regexDatasan, 'an');
-    kata = kata.replace(regexBitan1, 'o');
-    kata = kata.replace(regexBitan2, 'u');
-    kata = kata.replace(regexTekelungau, 'au');
-    kata = kata.replace(regexTekelungai, 'ai');
-    kata = kata.replace(regexKeleniah, 'ah');
+    kata = kata.replace(regexNengen, function (a) {
+        return a.substring(0, a.length-2) + '';
+        });
+    kata = kata.replace(regexUlan1, function (a) {
+        return a.substring(0, a.length-2) + 'i';
+        });
+    kata = kata.replace(regexUlan2, function (a) {
+        return a.substring(0, a.length-2) + 'é';
+        }); // Perlu dipertimbangkan alternatif untuk huruf é
+    kata = kata.replace(regexBicek, function (a) {
+        return a.substring(0, a.length-2) + 'e';
+        });
+    kata = kata.replace(regexBitan1, function (a) {
+        return a.substring(0, a.length-2) + 'o';
+        });
+    kata = kata.replace(regexBitan2, function (a) {
+        return a.substring(0, a.length-2) + 'u';
+        });
+    kata = kata.replace(regexTekelubang, 'ng');
+    kata = kata.replace(regexRejunjung, 'r');
+    kata = kata.replace(regexDatasan, 'n');
+    kata = kata.replace(regexTekelungau, 'u');
+    kata = kata.replace(regexTekelungai, 'i');
+    kata = kata.replace(regexKeleniah, 'h');
 
     return kata;
 };

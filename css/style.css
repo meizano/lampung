@@ -8,6 +8,14 @@
     font-size: 2em;
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display:block;
+}
+
 #hasilTerjemah ul {
   list-style: none unset none;
 }

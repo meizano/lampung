@@ -109,7 +109,29 @@ function append(parent, el) {
 };
 
 var kataAsal = document.getElementById('kataAsal');
+var aksaraAsal = document.getElementById('aksaraAsal');
+var petunjukAksara = document.getElementById('petunjukAksara');
+aksaraAsal.classList.add("hide");
+petunjukAksara.classList.add("hide");
 var bahasa = document.getElementById("terjemahForm").elements["bahasa"];
+
+bahasa[0].onchange = function() {
+    aksaraAsal.classList.remove("hide","show");
+    aksaraAsal.classList.add("hide");
+};
+bahasa[1].onchange = function() {
+    aksaraAsal.classList.remove("hide","show");
+    aksaraAsal.classList.add("show");
+};
+
+aksaraAsal.addEventListener("focusin", function () {
+    petunjukAksara.classList.remove("hide","show");
+    petunjukAksara.classList.add("show");
+});
+aksaraAsal.addEventListener("focusout", function () {
+    petunjukAksara.classList.remove("hide","show");
+    petunjukAksara.classList.add("hide");
+});
 
 kataAsal.onkeyup = function () {
     //Merubah ke huruf kecil semua agar tidak ada perbedaan huruf kecil dan besar
@@ -152,6 +174,99 @@ kataAsal.onkeyup = function () {
 
             //menambahkan ke bagian strong untuk diaksarakan
             spanAksara.innerHTML += aksarakan(kataAl[i]) + ' ';
+
+            if (bahasa.value === "indonesia") {
+                terjemahan.map(function (dt) {
+                    let p = createNode('p'),
+                        span1 = createNode('span'),
+                        span2 = createNode('span'),
+                        span3 = createNode('span'); // memakai fungsi pembuat elemen
+                    span1.innerHTML = dt[0] + " = ";
+                    span2.innerHTML = aksarakan(dt[1]);
+                    span2.classList.add("aksaraLampung"); //diubah menjadi aksara
+                    span3.innerHTML = " (" + dt[1] + ")";
+                    if (dt[2] != null) {
+                        let sup = createNode('sup');
+                        sup.innerHTML = dt[2];
+                        append(span3, sup);
+                    }
+                    append(p, span1); // memakai fungsi append ke parameter pertama
+                    append(p, span2);
+                    append(p, span3);
+                    append(hasilTerjemah, p);
+                })
+            } else if (bahasa.value === "lampung") {
+                terjemahan.map(function (dt) {
+                    let p = createNode('p'),
+                        span1 = createNode('span'),
+                        span2 = createNode('span'),
+                        span3 = createNode('span'); // memakai fungsi pembuat elemen
+                    span1.innerHTML = aksarakan(dt[0]);
+                    span1.classList.add("aksaraLampung"); //diubah menjadi aksara
+                    span2.innerHTML = " (" + dt[0] + ")";
+                    //jika ada dialek
+                    if (dt[2] != null) {
+                        let sup = createNode('sup');
+                        sup.innerHTML = dt[2];
+                        append(span2, sup);
+                    }
+                    span3.innerHTML = " = " + dt[1];
+                    append(p, span1); // memakai fungsi append ke parameter pertama
+                    append(p, span2);
+                    append(p, span3);
+                    append(hasilTerjemah, p);
+                })
+            }
+            console.log(terjemahan);
+        }
+
+        hasilTerjemah.classList.add("alert", "alert-info");
+    }
+};
+
+aksaraAsal.onkeyup = function () {
+
+    let aksaraAsals = aksaraAsal.value;
+    
+    // Jika spasi saja, tidak diproses
+    if (!aksaraAsals.replace(/\s/g, '').length) {
+        aksaraAsal.classList.remove("aksaraLampung");
+        hasilTerjemah.innerHTML = 'Selamat menterjemahkan';
+        hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
+        hasilTerjemah.classList.add("alert", "alert-info");
+    } else {
+        aksaraAsal.classList.add("aksaraLampung");
+        // Mengubah kata/kalimat yang diketik menjadi array String
+        let aksaraAl = aksaraAsals.split(/\s+/);
+        // jika elemen akhir kosong, elemen akhir dibuang
+        if (aksaraAl[aksaraAl.length - 1] == ('')) {
+            aksaraAl.pop();
+        }
+
+        //Mengosongkan nilai dan menghilangkan style
+        hasilTerjemah.innerHTML = '';
+        hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
+        let strong = createNode("strong");
+        strong.innerHTML = alfabetkan(aksaraAsal.value) + ' (' + bahasa.value + ') : <br/>';
+        let spanAksara = createNode('span');
+        spanAksara.classList.add("aksaraLampung");
+        append(strong, spanAksara);
+        append(hasilTerjemah, strong);
+        
+
+        for (let i = 0; i < aksaraAl.length; i++) {
+            //menterjemahkan
+            let terjemahan = terjemah(alfabetkan(aksaraAl[i]), bahasa.value, kamus);
+
+            //membuat span dan menambahkannya ke div#hasilTerjemah
+            let pKata = createNode("p");
+            pKata.innerHTML = alfabetkan(aksaraAl[i]) + ' (' + bahasa.value + ') ';
+            append(hasilTerjemah, createNode("hr"));
+            append(hasilTerjemah, pKata);
+            append(hasilTerjemah, createNode("hr"));
+
+            //menambahkan ke bagian strong untuk diaksarakan
+            spanAksara.innerHTML += aksaraAl[i] + ' ';
 
             if (bahasa.value === "indonesia") {
                 terjemahan.map(function (dt) {

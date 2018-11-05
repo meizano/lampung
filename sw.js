@@ -1,4 +1,4 @@
-var VERSION = "KamusAksaraLampung-v1";
+var VERSION = "KamusAksaraLampung-v20181105";
 
 var fileCache = [
   // './',
