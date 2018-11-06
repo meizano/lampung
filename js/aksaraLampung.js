@@ -153,20 +153,6 @@ function alfabetkan(aksaraLampung) {
     const regexTekelungai = /I/g;
     const regexKeleniah = /A/g;
 
-        // // Anak Huruf
-        // const regexNengen = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]ax/g;
-        // const regexUlan1 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[i]/g;
-        // const regexUlan2 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[E]/g;
-        // const regexBicek = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[e]/g;
-        // const regexBitan1 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[Oo]/g;
-        // const regexBitan2 = /[kg(ng)pbmtdnj(ny)ylrswh(gh)]a[u]/g;
-        // const regexTekelubang = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aiueoé][X]/g;
-        // const regexRejunjung = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aiueoé][R]/g;
-        // const regexDatasan = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aiueoé][N]/g;
-        // const regexTekelungau = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aieoé][U]/g;
-        // const regexTekelungai = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aueoé][I]/g;
-        // const regexKeleniah = /[kg(ng)pbmtdnj(ny)ylrswh(gh)][aiueoé][A]/g;
-
     // Kombinasi anak huruf yang perlu dipertimbangkan
     // eu, ei, ou, oi, iu, io, eo
 
@@ -217,6 +203,9 @@ function alfabetkan(aksaraLampung) {
     kata = kata.replace(regexTekelungau, 'u');
     kata = kata.replace(regexTekelungai, 'i');
     kata = kata.replace(regexKeleniah, 'h');
+
+    const regextandabaca = /[\,\!\@\.\*\+\?\$\^\/\\\;\:\'\"\[\]\{\}\(\)\%\#\$\^\-\+\=\_]/;
+    kata = kata.replace(regextandabaca, '');
 
     return kata;
 };

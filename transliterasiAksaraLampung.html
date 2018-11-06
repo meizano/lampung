@@ -8,7 +8,7 @@
     <meta name="description" content="Kamus Indonesia-Lampung">
     <meta name="author" content="Meizano">
     <meta name="theme-color" content="#5FAAE5" />
-    <title>Kamus Indonesia-Lampung</title>
+    <title>Transliterasi Aksara Lampung</title>
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
@@ -19,21 +19,28 @@
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-sm-12 col-md-12 col-lg-10">
-                <h1 class="text-center" id="judulAplikasi">Kamus Indonesia-Lampung</h1>
+                <h1 class="text-center" id="judulAplikasi">Transliterasi Aksara Lampung</h1>
                 <form id="terjemahForm">
                     <fieldset>
-                        <div class="form-group text-center">
-                            <input id="indonesia" name="bahasa" type="radio" value="indonesia" checked>Indonesia
-                            <input id="lampung" name="bahasa" type="radio" value="lampung">Lampung
-                        </div>
                         <div class="form-group">
-                            <input id="kataAsal" class="form-control" placeholder="Kata/kalimat yang diartikan" name="kataAsal"
-                                type="text" autofocus required>
-                            <input id="aksaraAsal" class="form-control" placeholder="Aksara yang diartikan" name="aksaraAsal"
-                                type="text" autocomplete="off">
+                            <input id="kataAsal" class="form-control" placeholder="Kata/kalimat yang ditransliterasikan"
+                                name="kataAsal" type="text" autofocus required>
+                            <input id="aksaraAsal" class="form-control" placeholder="Aksara yang ditransliterasikan"
+                                name="aksaraAsal" type="text" autocomplete="off">
                         </div>
                     </fieldset>
                 </form>
+
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-sm-12 col-md-12 col-lg-10">
+                <div id="hasilTerjemah">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-sm-12 col-md-12 col-lg-10">
                 <div id="petunjukAksara" class="">
                     <button type="button" class="btn btn-default"><span class="aksaraLampung">k</span><br /> (ka) k
                     </button>
@@ -102,24 +109,18 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-md-center">
-            <div class="col-sm-12 col-md-12 col-lg-10">
-                <div id="hasilTerjemah">
-                </div>
-            </div>
-        </div>
     </div>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <!-- <script src="./js/jquery-1.11.3.min.js"></script> -->
     <!-- <script src="./js/bootstrap.min.js"></script> -->
     <!--		<script src="dispatcher/indonesia2lampung.js"></script>-->
     <script src="./js/aksaraLampung.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/transliterasiAksara.js"></script>
     <script src="./js/offline.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127744902-1"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+        window.dataLayer window.dataLayer || [];
 
         function gtag() {
             dataLayer.push(arguments);

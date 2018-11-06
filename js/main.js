@@ -9,59 +9,57 @@ var hasilTerjemah = document.getElementById('hasilTerjemah');
 function storageAvailable(type) {
     try {
         var storage = window[type],
-        x = '__storage_test__';
+            x = '__storage_test__';
         storage.setItem(x, x);
         storage.removeItem(x);
         return true;
-    }
-    catch(e) {
+    } catch (e) {
         return false;
     }
 };
 
 // Mengambil data JSON dari server
 function fetchKamus() {
-var url = './dispatcher/indonesia2lampung.json'; // URL dari data JSON
-fetch(url)
-    .then((resp) => resp.json())
-    .then(function (data) {
-        // Simpan Data
-        localStorage.setItem('kamusJSON', JSON.stringify(data));
-        kamus = data;
-        hasilTerjemah.innerHTML = 'Siap menterjemahkan';
-        hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
-        hasilTerjemah.classList.add("alert", "alert-info");
+    var url = './dispatcher/indonesia2lampung.json'; // URL dari data JSON
+    fetch(url)
+        .then((resp) => resp.json())
+        .then(function (data) {
+            // Simpan Data
+            localStorage.setItem('kamusJSON', JSON.stringify(data));
+            kamus = data;
+            hasilTerjemah.innerHTML = 'Siap menterjemahkan';
+            hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
+            hasilTerjemah.classList.add("alert", "alert-info");
 
-    })
-    .catch(function (error) {
-        hasilTerjemah.innerHTML = JSON.stringify(error);
-        hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
-        hasilTerjemah.classList.add("alert", "alert-warning");
-    });
+        })
+        .catch(function (error) {
+            hasilTerjemah.innerHTML = JSON.stringify(error);
+            hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
+            hasilTerjemah.classList.add("alert", "alert-warning");
+        });
 };
 
 // Mengambil data dari web storage
 function fetchKamusDariLocalStorage(data) {
-        kamus = JSON.parse(data);
-        hasilTerjemah.innerHTML = 'Siap menterjemahkan (tersedia offline)';
-        hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
-        hasilTerjemah.classList.add("alert", "alert-info");
+    kamus = JSON.parse(data);
+    hasilTerjemah.innerHTML = 'Siap menterjemahkan (tersedia offline)';
+    hasilTerjemah.classList.remove("alert", "alert-info", "alert-warning");
+    hasilTerjemah.classList.add("alert", "alert-info");
 };
 
 if (storageAvailable('localStorage')) {
     if (localStorage.getItem('kamusJSON') === null) {
-    // Pertama kali dipakai atau belum ada data tersimpan
-    fetchKamus();
-    console.log("Fetch dari API");
+        // Pertama kali dipakai atau belum ada data tersimpan
+        fetchKamus();
+        console.log("Fetch dari API");
     } else {
         console.log("data: " + localStorage.getItem('kamusJSON'));
         fetchKamusDariLocalStorage(localStorage.getItem('kamusJSON'));
-    console.log("Fetch dari Local Storage");
+        console.log("Fetch dari Local Storage");
     }
-    }
-    else {
+} else {
     console.log("Data kamus belum tersedia..");
-    };
+};
 
 function terjemah(kataAsl, bhasa, strArray) {
     let kataA = "lpgkata",
@@ -115,21 +113,21 @@ aksaraAsal.classList.add("hide");
 petunjukAksara.classList.add("hide");
 var bahasa = document.getElementById("terjemahForm").elements["bahasa"];
 
-bahasa[0].onchange = function() {
-    aksaraAsal.classList.remove("hide","show");
+bahasa[0].onchange = function () {
+    aksaraAsal.classList.remove("hide", "show");
     aksaraAsal.classList.add("hide");
 };
-bahasa[1].onchange = function() {
-    aksaraAsal.classList.remove("hide","show");
+bahasa[1].onchange = function () {
+    aksaraAsal.classList.remove("hide", "show");
     aksaraAsal.classList.add("show");
 };
 
 aksaraAsal.addEventListener("focusin", function () {
-    petunjukAksara.classList.remove("hide","show");
+    petunjukAksara.classList.remove("hide", "show");
     petunjukAksara.classList.add("show");
 });
 aksaraAsal.addEventListener("focusout", function () {
-    petunjukAksara.classList.remove("hide","show");
+    petunjukAksara.classList.remove("hide", "show");
     petunjukAksara.classList.add("hide");
 });
 
@@ -159,7 +157,7 @@ kataAsal.onkeyup = function () {
         spanAksara.classList.add("aksaraLampung");
         append(strong, spanAksara);
         append(hasilTerjemah, strong);
-        
+
 
         for (let i = 0; i < kataAl.length; i++) {
             //menterjemahkan
@@ -227,7 +225,7 @@ kataAsal.onkeyup = function () {
 aksaraAsal.onkeyup = function () {
 
     let aksaraAsals = aksaraAsal.value;
-    
+
     // Jika spasi saja, tidak diproses
     if (!aksaraAsals.replace(/\s/g, '').length) {
         aksaraAsal.classList.remove("aksaraLampung");
@@ -252,7 +250,7 @@ aksaraAsal.onkeyup = function () {
         spanAksara.classList.add("aksaraLampung");
         append(strong, spanAksara);
         append(hasilTerjemah, strong);
-        
+
 
         for (let i = 0; i < aksaraAl.length; i++) {
             //menterjemahkan
@@ -319,7 +317,7 @@ aksaraAsal.onkeyup = function () {
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
-    .then(function() {
-        console.log('SW terdaftar');
-    });
+        .then(function () {
+            console.log('SW terdaftar');
+        });
 };
